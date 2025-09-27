@@ -76,6 +76,8 @@ public class TestRunnerPrintAnimal {
       String[][] input = inputs.get(i);
       String expectedOutput = expectedOutputs.get(i);
 
+      // Redirect System.out.println to print to the in-memory buffer
+      // instead of the console
       PrintStream originalOut = System.out;
       ByteArrayOutputStream baos = new ByteArrayOutputStream();
       PrintStream testOut = new PrintStream(baos);
@@ -85,8 +87,9 @@ public class TestRunnerPrintAnimal {
       AnimalRecognition.printAnimal(input);
       String output  = baos.toString();
 
-      // Restore System.out.println`
+      // Restore System.out.println so we communicate back to end user .
       System.setOut(originalOut);
+
       if(output.equals(expectedOutput)) {
         System.out.println("Passed test case: " + i );
         score++;
