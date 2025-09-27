@@ -12,7 +12,10 @@ import java.util.List;
  */
 public class TestRunnerPrintAnimal {
   public static void main(String[] args) {
+    // The i'th input will be used as input to the i'th printAnimal call.
     List<String[][]> inputs = new ArrayList<>();
+    // The console (System.out.println) output of the i'th execution of printAnimal
+    // is matched against the i'th expectation
     List<String> expectedOutputs = new ArrayList<>();
 
     inputs.add(new String[][] { { "X" } });
@@ -70,6 +73,11 @@ public class TestRunnerPrintAnimal {
       "[O, X]\n" +
       "[O, X]\n"
     );
+
+    if(inputs.size() != expectedOutputs.size()) {
+      System.out.println("You misconfigured your tests. There are (" + inputs.size() + ") inputs but (" + expectedOutputs.size() + ") expected values.");
+      System.exit(-1);
+    }
 
     int score = 0;
     for(int i = 0 ; i < inputs.size(); i++) {

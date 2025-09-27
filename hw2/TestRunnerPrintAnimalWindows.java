@@ -10,9 +10,12 @@ import java.util.List;
  * If it doesn't work, try to Unix/Mac version: TestRunnerPrintAnimal
  * which checks for the "\n" sequence.
  */
-public class TestRunnerPrintAnimalWindow {
+public class TestRunnerPrintAnimalWindows {
   public static void main(String[] args) {
+    // The i'th input will be used as input to the i'th printAnimal call.
     List<String[][]> inputs = new ArrayList<>();
+    // The console (System.out.println) output of the i'th execution of printAnimal
+    // is matched against the i'th expectation
     List<String> expectedOutputs = new ArrayList<>();
 
     inputs.add(new String[][] { { "X" } });
@@ -58,10 +61,10 @@ public class TestRunnerPrintAnimalWindow {
 
     // Begin tests of flipRotateAnimal
     inputs.add(AnimalRecognition.rotateAnimal90degrees(
-            new String[][] {
-                    { "O", "O" , "O" , "X", "X"},
-                    { "X", "X" , "X" , "X", "O"},
-            }
+      new String[][] {
+        { "O", "O" , "O" , "X", "X"},
+        { "X", "X" , "X" , "X", "O"},
+      }
     ));
     expectedOutputs.add(
       "[X, O]\r\n" +
@@ -70,6 +73,11 @@ public class TestRunnerPrintAnimalWindow {
       "[O, X]\r\n" +
       "[O, X]\r\n"
     );
+
+    if(inputs.size() != expectedOutputs.size()) {
+      System.out.println("You misconfigured your tests. There are (" + inputs.size() + ") inputs but (" + expectedOutputs.size() + ") expected values.");
+      System.exit(0);
+    }
 
     int score = 0;
     for(int i = 0 ; i < inputs.size(); i++) {
