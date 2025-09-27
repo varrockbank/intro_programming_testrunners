@@ -10,7 +10,7 @@ import java.util.List;
  * If it doesn't work, try to Unix/Mac version: TestRunnerPrintAnimal
  * which checks for the "\n" sequence.
  */
-public class TestRunnerPrintAnimal {
+public class TestRunnerPrintAnimalWindow {
   public static void main(String[] args) {
     List<String[][]> inputs = new ArrayList<>();
     List<String> expectedOutputs = new ArrayList<>();
