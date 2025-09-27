@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Intended to be run on Mac and Unix where System.out.println
- * produces a "\n" sequence.
+ * Intended to be run on Windows where System.out.println
+ * produces a "\r\n" sequence.
  *
- * If it doesn't work on Windows, see: TestRunnerPrintAnimalWindows
- * which checks for the "\r\n" sequence.
+ * If it doesn't work, try to Unix/Mac version: TestRunnerPrintAnimal
+ * which checks for the "\n" sequence.
  */
 public class TestRunnerPrintAnimal {
   public static void main(String[] args) {
@@ -16,21 +16,21 @@ public class TestRunnerPrintAnimal {
     List<String> expectedOutputs = new ArrayList<>();
 
     inputs.add(new String[][] { { "X" } });
-    expectedOutputs.add("[X]\n");
+    expectedOutputs.add("[X]\r\n");
 
     inputs.add(new String[][] { { "X", "O" } });
-    expectedOutputs.add("[X, O]\n");
+    expectedOutputs.add("[X, O]\r\n");
 
     inputs.add(new String[][] { { "0"}, {"X"}});
-    expectedOutputs.add("[0]\n[X]\n");
+    expectedOutputs.add("[0]\r\n[X]\r\n");
 
     inputs.add(new String[][] {
       { "O", "O" , "O" , "X", "X"},
       { "X", "X" , "X" , "X", "O"},
     });
     expectedOutputs.add(
-      "[O, O, O, X, X]\n" +
-      "[X, X, X, X, O]\n"
+      "[O, O, O, X, X]\r\n" +
+      "[X, X, X, X, O]\r\n"
     );
 
     inputs.add(new String[][] {
@@ -39,9 +39,9 @@ public class TestRunnerPrintAnimal {
       { "X", "O" , "X"},
     });
     expectedOutputs.add(
-      "[X, O, O]\n" +
-      "[X, X, X]\n" +
-      "[X, O, X]\n"
+      "[X, O, O]\r\n" +
+      "[X, X, X]\r\n" +
+      "[X, O, X]\r\n"
     );
 
     // Begin tests of flipAnimalHorizontal
@@ -52,8 +52,8 @@ public class TestRunnerPrintAnimal {
       }
     ));
     expectedOutputs.add(
-      "[X, X, O, O, O]\n" +
-      "[O, X, X, X, X]\n"
+      "[X, X, O, O, O]\r\n" +
+      "[O, X, X, X, X]\r\n"
     );
 
     // Begin tests of flipRotateAnimal
@@ -64,11 +64,11 @@ public class TestRunnerPrintAnimal {
             }
     ));
     expectedOutputs.add(
-      "[X, O]\n" +
-      "[X, X]\n" +
-      "[O, X]\n" +
-      "[O, X]\n" +
-      "[O, X]\n"
+      "[X, O]\r\n" +
+      "[X, X]\r\n" +
+      "[O, X]\r\n" +
+      "[O, X]\r\n" +
+      "[O, X]\r\n"
     );
 
     int score = 0;
